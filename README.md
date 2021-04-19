@@ -1,0 +1,2 @@
+# Login-Database
+Simple login Graphical User Interface (GUI) using Java Swing to implement a featured login and signup page. Implements a user database through the use of SQL, specifically MySQL, to host a local database that connects to the page. Includes the usage of the JavaMail API to send verification codes to emails to confirm signup. Planning to add onto this project by allowing users to insert, delete, and update their own bodies of text or posts using a separate SQL database.
