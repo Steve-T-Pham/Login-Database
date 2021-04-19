@@ -45,8 +45,10 @@ import java.sql.Statement;
      */
     
     
-    //need to eventually move each function to its own class and make method calls to make it look cleaner
-    //maybe turn this into an eventual bug tracker where users can update information and so on
+    /*
+     * Method to create overall user-interace with multiple functionalities, will eventually clean up code by taking ActionEvents and making them their own functions.
+     * @param String[] args allows the user to run program by Java classname
+     */
   public static void main(String[] args){ 
     //FRONT END GUI ======================================
 	//LOGIN SCREEN ==========================================================================
@@ -56,6 +58,7 @@ import java.sql.Statement;
     panel = new JPanel();
     frame.setSize(300,225);
     frame.setResizable(false);
+    frame.setTitle("Login");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.add(panel);
    
@@ -100,10 +103,6 @@ import java.sql.Statement;
     //login button
     JButton loginButton = new JButton("Login");
     loginButton.setBounds(100, 110, 165, 25);
-    /*
-    loginButton.setBackground(Color.CYAN);
-    loginButton.setBorder(BorderFactory.createEmptyBorder(0,0,0,0));
-    */
     //login button action
     panel.add(loginButton);
 
@@ -128,9 +127,8 @@ import java.sql.Statement;
       		  ResultSet set = statement.executeQuery();  
       		  if (set.next()) {
       			  System.out.println(userText.getText() + " and " + passwordText.getText() + " found!");
-          		  frame.getContentPane().removeAll();
-          		  frame.revalidate();
-          		  frame.setSize(300,250);
+      			  frame.dispose();
+          		  mainPage.constructMainPage();
       		  }
       		  else {
       			  JOptionPane.showMessageDialog(frame, "Invalid Username or Password!");
@@ -240,7 +238,7 @@ import java.sql.Statement;
         }
     });
     
-    //Window won't update correctly and seems to be a mess when it swaps back and forth between login and signup screen
+    //Trying to implement a back button if user didn't mean to click Create Account, currently doesn't function as expected will come back to later
     /*
     JButton backToLogin = new JButton("Back");
     backToLogin.setBounds(100, 170, 165, 25);
@@ -250,15 +248,12 @@ import java.sql.Statement;
     		frame.add(panel);
 	        frame.revalidate();
 	      //  frame.setSize(300,250);
-
-
     	}
     });
     
     */
     //  signupScreen.add(backToLogin);
-    
-    
+
     
     //adds everything to signupscreen
     signupScreen.add(signupEmail);
@@ -270,9 +265,6 @@ import java.sql.Statement;
     signupScreen.add(signupPasswordConfirm);
     signupScreen.add(signupPasswordConfirmLabel);
     signupScreen.add(createAccount);
-
-    
     frame.setVisible(true);
   }
-
 }
